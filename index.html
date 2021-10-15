@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: rgb(44, 41, 41);
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            height: 250px;
+            width: 500px;
+            border: 75px solid grey;
+        }
+        .time {
+            display: flex;
+            padding: 25px;
+            margin-left: 150px;
+            margin-top: 55px;
+            font-size: 32px;
+        }
+        .ampm{
+            font-size: 16px;
+            margin-top: 50px;
+            margin-left: 10px;
+            opacity: 0.4;
+        }
+        .days{
+            padding: 2px;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p class="day">
+            <span class="dayNo0 days">MON</span>
+            <span class="dayNo1 days">TUE</span>
+            <span class="dayNo2 days">WED</span>
+            <span class="dayNo3 days">THU</span>
+            <span class="dayNo4 days">FRI</span>
+            <span class="dayNo5 days">SAT</span>
+            <span class="dayNo6 days">SUN</span>
+        </p>
+        <div class="time">
+            <p class="current-time"></p>
+            <p class="ampm"></p>
+        </div>
+    </div>
+    
+</body>
+<script>
+
+setInterval(showTime, 1000);
+function showTime() {
+    let time = new Date();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+    am_pm = "AM";
+  
+    if (hour > 12) {
+        am_pm = "PM";
+    }
+    if (hour == 0) {
+        am_pm = "AM";
+    }
+    let currentTime = hour + ":" 
+            + min + ":" + sec ;
+    
+    
+    document.querySelector(".current-time").innerHTML = currentTime
+    document.querySelector(".ampm").innerHTML = am_pm
+    const day = document.querySelector(`.dayNo${time.getDay()}`)
+    day.style.opacity = "1"
+}
+showTime();
+
+</script>
+</html>
